@@ -1,6 +1,23 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  app: {
+    head: {
+      title: 'Nuxt',
+      meta: [
+        {
+          name: 'description',
+          content: 'Everything about Nust 3'
+        }
+      ],
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
+        }
+      ]
+    }
+  },
   modules: [
     '@nuxtjs/tailwindcss',
     [
@@ -19,23 +36,6 @@ export default defineNuxtConfig({
     },
     storage: "localStorage",
   },
-  app: {
-    head: {
-      title: 'Nuxt',
-      meta: [
-        {
-          name: 'description',
-          content: 'Everything about Nust 3'
-        }
-      ],
-      link: [
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
-        }
-      ]
-    }
-  },
   ssr: false,
   runtimeConfig: {
     public: {
@@ -43,4 +43,7 @@ export default defineNuxtConfig({
       ACTIVE_PING_INTERVAL: process.env.ACTIVE_PING_INTERVAL ?? "60",
     },
   },
+  typescript: {
+    strict: true
+  }
 })
