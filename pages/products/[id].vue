@@ -2,9 +2,6 @@
 import { useProductStore } from '~/stores/product'
 const productStore = useProductStore();
 
-definePageMeta({
-    layout: 'products'
-})
 const id= useRoute().params.id as string
 onBeforeMount(async () => {
     await productStore.getProduct(id);
@@ -14,6 +11,14 @@ onBeforeMount(async () => {
 
 <template>
     <div>
-        <ProductDetails :product="productStore.selectedProduct" />
+        <NuxtLayout name="default">
+            <template #secondbar>
+                <h1 class="my-4">Product Details</h1>
+            </template>
+
+            <ProductDetails :product="productStore.selectedProduct" />
+
+        </NuxtLayout>
+        
     </div>
 </template>

@@ -2,10 +2,6 @@
 import { useProductStore } from '~/stores/product'
 const productStore = useProductStore();
 
-definePageMeta({
-    layout: 'products'
-})
-
 useHead({
     title: 'Nuxt | Products'
 })
@@ -15,18 +11,23 @@ onBeforeMount(async () => {
 })
 
 </script>
+
 <template>
     <div>
-        <h1 class="my-4">Products</h1>
-        <hr>
-        <div class="grid grid-cols-4 gap-5 mt-3">
-            <div v-for="p in productStore.products" :key="p.id">
-                <ProductCard :product="p" />
+        <NuxtLayout name="default">
+            <template #secondbar>
+                <h1 class="my-4">Products</h1>
+            </template>
+
+            <div class="grid grid-cols-4 gap-5 px-5 py-5 shadow-md">
+                <div v-for="p in productStore.products" :key="p.id">
+                    <ProductCard :product="p" />
+                </div>
             </div>
-        </div>
+            
+        </NuxtLayout>
     </div>
 </template>
 
-
-
 <style scoped></style>
+
